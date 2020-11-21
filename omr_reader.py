@@ -10,35 +10,41 @@ edged = cv2.Canny(blurred, 80, 90)
 
 contours = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
+
 ques_box_1 = False
 ques_box_2 = False
+
 
 for i in range(len(contours[0])):
     if contours[1][0][i][1] == -1:
         area = cv2.contourArea(contours[0][i])
         if area > 50000:
+            # print(area)
             # print(contours[1][0][i])
             # cv2.drawContours(image, [contours[0][i]], 0, (0,255,0), 1)
             x,y,w,h = cv2.boundingRect(contours[0][i])
+            print(w)
             # cv2.rectangle(image, (x,y), (x+w, y+h), (0,255,0), 1 )
-            print(x,y)
+            # print(x,y)
 
 # selecting Question Box
 
-            if (115 <= y <= 130):
+            if (270 <= w <= 280):
                 if not ques_box_1:
                     cv2.rectangle(image, (x,y), (x+w, y+h), (0,255,0), 1 )
                     ROI = gray[y:y+h, x:x+w]
                     new_image = image[y:y+h, x:x+w]
                     ques_box_1 = True
-                    print(x,y)
-            elif (380 <= y <= 395):
+                    # print(area)
+                    # print(x,y)
+            elif (680 <= w <= 690):
                 if not ques_box_2:
                     cv2.rectangle(image, (x,y), (x+w, y+h), (0,255,0), 1 )
                     ROI = gray[y:y+h, x:x+w]
                     new_image = image[y:y+h, x:x+w]
                     ques_box_2 = True
-                    print(x,y)
+                    # print(area)
+                    # print(x,y)
 
 
 ############
