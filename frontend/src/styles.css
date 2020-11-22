@@ -1,0 +1,22 @@
+.center-navbar{
+    padding-left: 40%;
+}
+
+label {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+span {
+    font-weight: normal;
+    font-size: medium;
+    color:green;
+}
+
+.center {
+    text-align: center;
+}
+
+.q-no{
+    color: rgb(26, 167, 49);
+}
